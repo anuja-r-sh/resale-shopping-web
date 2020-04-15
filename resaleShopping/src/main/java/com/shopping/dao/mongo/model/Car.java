@@ -25,7 +25,7 @@ public class Car {
 	private WareHouse wareHouse;
 
 	public Car(long _id, String make, String model, long year_model, Double price, boolean licensed, String date_added,
-			String location, WareHouse wareHouse) {
+			String carLocation, WareHouse wareHouse) {
 		super();
 		this._id = _id;
 		this.make = make;
@@ -34,7 +34,7 @@ public class Car {
 		this.price = price;
 		this.licensed = licensed;
 		this.date_added = date_added;
-		this.carLocation = location;
+		this.carLocation = carLocation;
 		this.wareHouse = wareHouse;
 	}
 

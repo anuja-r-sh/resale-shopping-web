@@ -3,7 +3,7 @@ package com.shopping.dao.mongo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping.dao.mongo.model.Car;
@@ -19,9 +19,9 @@ public class CarResource {
 	@Autowired
 	CarsRepo carRepo;
 
-	@RequestMapping("numbers")
+	@GetMapping("/cars")
 	public List<Car> getListOfCars() {
-		return carRepo.getCars();
+		return carRepo.findAll();
 	}
 
 }
