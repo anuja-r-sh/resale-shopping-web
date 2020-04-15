@@ -1,11 +1,11 @@
-package com.shopping.dao.mongo.repository;
+package com.shopping.mongo.repository;
 
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
-import com.shopping.dao.mongo.model.Car;
+import com.shopping.mongo.model.Car;
 
 /**
  * Dao interface for Car model

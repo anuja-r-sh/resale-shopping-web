@@ -17,11 +17,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.shopping.dao.mongo.model.Car;
-import com.shopping.dao.mongo.model.Location;
-import com.shopping.dao.mongo.model.WareHouse;
-import com.shopping.dao.mongo.repository.CarsRepo;
-import com.shopping.dao.mongo.repository.WareHouseRepo;
+import com.shopping.mongo.model.Car;
+import com.shopping.mongo.model.Location;
+import com.shopping.mongo.model.WareHouse;
+import com.shopping.mongo.repository.CarsRepo;
+import com.shopping.mongo.repository.WareHouseRepo;
 
 /**
  * This class boots the spring application

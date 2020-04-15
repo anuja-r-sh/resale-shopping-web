@@ -1,4 +1,4 @@
-package com.shopping.dao.mongo.controller;
+package com.shopping.mongo.controller;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopping.dao.mongo.model.WareHouse;
-import com.shopping.dao.mongo.repository.WareHouseRepo;
+import com.shopping.mongo.model.WareHouse;
+import com.shopping.mongo.repository.WareHouseRepo;
 
 /**
  * Controller class for WareHouse

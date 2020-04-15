@@ -1,4 +1,4 @@
-package com.shopping.dao.mongo.model;
+package com.shopping.mongo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
