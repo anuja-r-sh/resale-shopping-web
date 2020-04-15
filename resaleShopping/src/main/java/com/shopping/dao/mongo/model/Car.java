@@ -3,7 +3,6 @@ package com.shopping.dao.mongo.model;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -22,8 +21,6 @@ public class Car {
 	private boolean licensed;
 	private Date date_added = null;
 	private String carLocation;
-
-	@DBRef
 	private WareHouse wareHouse;
 
 	public Car(long _id, String make, String model, long year_model, Double price, boolean licensed, Date date_added,
