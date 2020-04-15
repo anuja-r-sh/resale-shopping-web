@@ -1,5 +1,7 @@
 package com.shopping.dao.mongo.model;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,13 +20,13 @@ public class Car {
 	private long year_model;
 	private Double price;
 	private boolean licensed;
-	private String date_added = null;
+	private Date date_added = null;
 	private String carLocation;
 
 	@DBRef
 	private WareHouse wareHouse;
 
-	public Car(long _id, String make, String model, long year_model, Double price, boolean licensed, String date_added,
+	public Car(long _id, String make, String model, long year_model, Double price, boolean licensed, Date date_added,
 			String carLocation, WareHouse wareHouse) {
 		super();
 		this._id = _id;
@@ -86,11 +88,11 @@ public class Car {
 		this.licensed = licensed;
 	}
 
-	public String getDate_added() {
+	public Date getDate_added() {
 		return date_added;
 	}
 
-	public void setDate_added(String date_added) {
+	public void setDate_added(Date date_added) {
 		this.date_added = date_added;
 	}
 

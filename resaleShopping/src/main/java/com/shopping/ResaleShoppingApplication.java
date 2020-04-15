@@ -3,6 +3,9 @@ package com.shopping;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -36,7 +39,6 @@ public class ResaleShoppingApplication {
 
 		try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/src/main/resources/cars.json")) {
 			JSONParser jsonParser = new JSONParser();
-			System.out.println(System.getProperty("spring.data.mongodb.database"));
 			// Read JSON file
 			Object obj = jsonParser.parse(reader);
 
@@ -53,13 +55,20 @@ public class ResaleShoppingApplication {
 
 				JSONObject cars = (JSONObject) wareHouseObject.get("cars");
 				String carLocation = (String) cars.get("location");
-				System.out.println(carLocation);
 				JSONArray carList = (JSONArray) cars.get("vehicles");
 				for (Object carObject : carList) {
 					JSONObject car = (JSONObject) carObject;
-					carRepo.save(new Car((Long) car.get("_id"), (String) car.get("make"), (String) car.get("model"),
-							(Long) car.get("year_model"), (Double) car.get("price"), (Boolean) car.get("licensed"),
-							(String) car.get("date_added"), carLocation, wareHouse));
+					DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					Date dateAdded;
+					try {
+						dateAdded = dateFormat.parse((String) car.get("date_added"));
+						carRepo.save(new Car((Long) car.get("_id"), (String) car.get("make"), (String) car.get("model"),
+								(Long) car.get("year_model"), (Double) car.get("price"), (Boolean) car.get("licensed"),
+								dateAdded, carLocation, wareHouse));
+					} catch (java.text.ParseException e) {
+						e.printStackTrace();
+					}
+
 				}
 
 			}
