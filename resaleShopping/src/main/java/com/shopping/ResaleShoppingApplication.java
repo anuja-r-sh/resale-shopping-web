@@ -12,6 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -22,57 +23,88 @@ import com.shopping.dao.mongo.model.WareHouse;
 import com.shopping.dao.mongo.repository.CarsRepo;
 import com.shopping.dao.mongo.repository.WareHouseRepo;
 
+/**
+ * This class boots the spring application
+ * 
+ * @author Anuja
+ *
+ */
 @SpringBootApplication
 public class ResaleShoppingApplication {
-	@Autowired
-	WareHouseRepo wareHouseRepo;
 
 	@Autowired
-	CarsRepo carRepo;
+	private WareHouseRepo wareHouseRepo;
+
+	@Autowired
+	private CarsRepo carRepo;
+
+	@Value("${data.seed}")
+	private String jsonPath;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ResaleShoppingApplication.class, args);
 	}
 
+	/**
+	 * This method loads the initial data in the MongoDB when the application
+	 * boots up.
+	 *
+	 */
 	@Bean
-	public String loadSeedData() {
-
-		try (FileReader reader = new FileReader(System.getProperty("user.dir") + "/src/main/resources/cars.json")) {
+	public void loadSeedData() {
+		try (FileReader reader = new FileReader(System.getProperty("user.dir") + jsonPath)) {
 			JSONParser jsonParser = new JSONParser();
 			// Read JSON file
 			Object obj = jsonParser.parse(reader);
 
+			/*
+			 * Following code parse through the nested json to store the data
+			 * model in the database
+			 */
 			JSONArray wareHouses = (JSONArray) obj;
 			for (Object data : wareHouses) {
 				JSONObject wareHouseObject = (JSONObject) data;
 				JSONObject locationObject = (JSONObject) wareHouseObject.get("location");
 
-				Location location = new Location((String) locationObject.get("long"),
-						(String) locationObject.get("lat"));
-				WareHouse wareHouse = new WareHouse(Integer.parseInt((String) wareHouseObject.get("_id")), location,
-						(String) wareHouseObject.get("name"));
+				String longitude = (String) locationObject.get("long");
+				String latitude = (String) locationObject.get("lat");
+
+				Location location = new Location(longitude, latitude);
+
+				int wareHouseId = Integer.parseInt((String) wareHouseObject.get("_id"));
+				String wareHouseName = (String) wareHouseObject.get("name");
+				WareHouse wareHouse = new WareHouse(wareHouseId, location, wareHouseName);
+
+				/* saving in the database */
 				wareHouseRepo.save(wareHouse);
 
 				JSONObject cars = (JSONObject) wareHouseObject.get("cars");
 				String carLocation = (String) cars.get("location");
 				JSONArray carList = (JSONArray) cars.get("vehicles");
+
 				for (Object carObject : carList) {
 					JSONObject car = (JSONObject) carObject;
 					DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-					Date dateAdded;
+
+					long carId = (Long) car.get("_id");
+					String maker = (String) car.get("make");
+					String model = (String) car.get("model");
+					long year = (Long) car.get("year_model");
+					Double price = (Double) car.get("price");
+					boolean licensed = (Boolean) car.get("licensed");
+					Date dateAdded = null;
 					try {
 						dateAdded = dateFormat.parse((String) car.get("date_added"));
-						carRepo.save(new Car((Long) car.get("_id"), (String) car.get("make"), (String) car.get("model"),
-								(Long) car.get("year_model"), (Double) car.get("price"), (Boolean) car.get("licensed"),
-								dateAdded, carLocation, wareHouse));
 					} catch (java.text.ParseException e) {
 						e.printStackTrace();
 					}
 
+					/* saving in the database */
+					carRepo.save(
+							new Car(carId, maker, model, year, price, licensed, dateAdded, carLocation, wareHouse));
+
 				}
-
 			}
-
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -80,6 +112,5 @@ public class ResaleShoppingApplication {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 }
