@@ -1,20 +1,31 @@
-package com.shopping.dao.mongo.document;
+package com.shopping.dao.mongo.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 @Document
 public class Car {
 	@Id
-	private int _id;
+	private long _id;
 	private String make;
 	private String model;
-	private int year_model;
-	private double price;
+	private long year_model;
+	private Double price;
 	private boolean licensed;
 	private String date_added = null;
+	private String carLocation;
 
-	public Car(int _id, String make, String model, int year_model, double price, boolean licensed, String date_added) {
+	@DBRef
+	private WareHouse wareHouse;
+
+	public Car(long _id, String make, String model, long year_model, Double price, boolean licensed, String date_added,
+			String location, WareHouse wareHouse) {
 		super();
 		this._id = _id;
 		this.make = make;
@@ -23,13 +34,15 @@ public class Car {
 		this.price = price;
 		this.licensed = licensed;
 		this.date_added = date_added;
+		this.carLocation = location;
+		this.wareHouse = wareHouse;
 	}
 
-	public int get_id() {
+	public long get_id() {
 		return _id;
 	}
 
-	public void set_id(int _id) {
+	public void set_id(long _id) {
 		this._id = _id;
 	}
 
@@ -49,19 +62,19 @@ public class Car {
 		this.model = model;
 	}
 
-	public int getYear_model() {
+	public long getYear_model() {
 		return year_model;
 	}
 
-	public void setYear_model(int year_model) {
+	public void setYear_model(long year_model) {
 		this.year_model = year_model;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -79,6 +92,22 @@ public class Car {
 
 	public void setDate_added(String date_added) {
 		this.date_added = date_added;
+	}
+
+	public String getLocation() {
+		return carLocation;
+	}
+
+	public void setLocation(String location) {
+		this.carLocation = location;
+	}
+
+	public WareHouse getWareHouse() {
+		return wareHouse;
+	}
+
+	public void setWareHouse(WareHouse wareHouse) {
+		this.wareHouse = wareHouse;
 	}
 
 }
