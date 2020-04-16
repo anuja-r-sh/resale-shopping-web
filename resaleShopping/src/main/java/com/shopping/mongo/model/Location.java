@@ -1,10 +1,5 @@
 package com.shopping.mongo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-@Data
-@AllArgsConstructor
 public class Location {
 
 	private String latitude;

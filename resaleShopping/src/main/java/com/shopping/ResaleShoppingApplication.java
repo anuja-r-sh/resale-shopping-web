@@ -16,6 +16,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
 import com.shopping.mongo.model.Car;
 import com.shopping.mongo.model.Location;
@@ -29,6 +32,7 @@ import com.shopping.mongo.repository.WareHouseRepo;
  * @author Anuja
  *
  */
+
 @SpringBootApplication
 public class ResaleShoppingApplication {
 
@@ -41,6 +45,9 @@ public class ResaleShoppingApplication {
 	@Value("${data.seed}")
 	private String jsonPath;
 
+	@Autowired
+	ResourceLoader resourceLoader;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ResaleShoppingApplication.class, args);
 	}
@@ -52,7 +59,8 @@ public class ResaleShoppingApplication {
 	 */
 	@Bean
 	public void loadSeedData() {
-		try (FileReader reader = new FileReader(System.getProperty("user.dir") + jsonPath)) {
+		Resource resource = resourceLoader.getResource("classpath:cars.json");
+		try (FileReader reader = new FileReader(resource.getFile())) {
 			JSONParser jsonParser = new JSONParser();
 			// Read JSON file
 			Object obj = jsonParser.parse(reader);
