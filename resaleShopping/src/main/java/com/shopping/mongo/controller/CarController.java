@@ -18,19 +18,19 @@ import com.shopping.mongo.repository.CarsRepo;
  *
  */
 @RestController
-public class CarResource {
+public class CarController {
 
 	@Autowired
 	private CarsRepo carRepo;
 
 	@GetMapping("/cars")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public List<Car> getListOfCars() {
 		return carRepo.findAll();
 	}
 
 	@GetMapping("/cars/{wareHouseId}")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public List<Car> getCarsByWareHouse(@PathVariable int wareHouseId) {
 		return carRepo.findByWareHouseId(wareHouseId);
 	}
