@@ -23,7 +23,7 @@ public class WareHouseController {
 	WareHouseRepo wareHouseRepo;
 
 	@GetMapping("/wareHouses")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public List<WareHouse> getListOfWareHouses() {
 		return wareHouseRepo.findAll();
 	}
