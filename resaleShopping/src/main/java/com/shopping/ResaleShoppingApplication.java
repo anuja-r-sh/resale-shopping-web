@@ -1,6 +1,5 @@
 package com.shopping;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -16,15 +15,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
-import com.shopping.mongo.model.Car;
-import com.shopping.mongo.model.Location;
-import com.shopping.mongo.model.WareHouse;
-import com.shopping.mongo.repository.CarsRepo;
-import com.shopping.mongo.repository.WareHouseRepo;
+import com.shopping.dao.repository.CarsRepo;
+import com.shopping.dao.repository.WareHouseRepo;
+import com.shopping.model.Car;
+import com.shopping.model.Location;
+import com.shopping.model.WareHouse;
 
 /**
  * This class boots the spring application
@@ -113,11 +111,7 @@ public class ResaleShoppingApplication {
 
 				}
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
+		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		}
 	}

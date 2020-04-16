@@ -1,8 +1,8 @@
-package com.shopping.mongo.repository;
+package com.shopping.dao.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.shopping.mongo.model.WareHouse;
+import com.shopping.model.WareHouse;
 
 public interface WareHouseRepo extends MongoRepository<WareHouse, Integer> {
 	

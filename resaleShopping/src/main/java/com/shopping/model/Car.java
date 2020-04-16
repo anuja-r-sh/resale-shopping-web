@@ -1,4 +1,4 @@
-package com.shopping.mongo.model;
+package com.shopping.model;
 
 import java.util.Date;
 

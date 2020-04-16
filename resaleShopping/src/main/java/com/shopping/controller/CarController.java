@@ -1,4 +1,4 @@
-package com.shopping.mongo.controller;
+package com.shopping.controller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopping.mongo.model.Car;
-import com.shopping.mongo.repository.CarsRepo;
+import com.shopping.dao.repository.CarsRepo;
+import com.shopping.model.Car;
 
 /**
  * Controller class for Car Dao
