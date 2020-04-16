@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping.model.Car;
@@ -27,12 +26,6 @@ public class CarController {
 	@CrossOrigin(origins = "*")
 	public List<Car> getListOfCars() {
 		return carService.getListOfCars();
-	}
-
-	@GetMapping("/cars/{wareHouseId}")
-	@CrossOrigin(origins = "*")
-	public List<Car> getCarsByWareHouse(@PathVariable int wareHouseId) {
-		return carService.getCarsByWareHouse(wareHouseId);
 	}
 
 }

@@ -19,7 +19,7 @@ import com.shopping.model.Car;
 public interface CarsRepo extends MongoRepository<Car, Integer> {
 
 	/* find car by wareHouse id */
-	@Query("{'wareHouse.id': ?0}")
-	List<Car> findByWareHouseId(int wareHouseId);
+	@Query("{'carList[id]': ?0}")
+	List<Car> findWareHouse(int carId);
 
 }

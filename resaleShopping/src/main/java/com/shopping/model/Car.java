@@ -17,10 +17,9 @@ public class Car {
 	private boolean licensed;
 	private Date date_added = null;
 	private String carLocation;
-	private WareHouse wareHouse;
 
 	public Car(long _id, String make, String model, long year_model, Double price, boolean licensed, Date date_added,
-			String carLocation, WareHouse wareHouse) {
+			String carLocation) {
 		super();
 		this._id = _id;
 		this.make = make;
@@ -30,7 +29,6 @@ public class Car {
 		this.licensed = licensed;
 		this.date_added = date_added;
 		this.carLocation = carLocation;
-		this.wareHouse = wareHouse;
 	}
 
 	public long get_id() {
@@ -97,12 +95,13 @@ public class Car {
 		this.carLocation = location;
 	}
 
-	public WareHouse getWareHouse() {
-		return wareHouse;
+	@Override
+	public String toString() {
+		return "Car [_id=" + _id + ", make=" + make + ", model=" + model + ", year_model=" + year_model + ", price="
+				+ price + ", licensed=" + licensed + ", date_added=" + date_added + ", carLocation=" + carLocation
+				+ "]";
 	}
-
-	public void setWareHouse(WareHouse wareHouse) {
-		this.wareHouse = wareHouse;
-	}
+	
+	
 
 }
