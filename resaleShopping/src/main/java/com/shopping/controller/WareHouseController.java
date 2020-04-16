@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopping.dao.repository.WareHouseRepo;
 import com.shopping.model.WareHouse;
+import com.shopping.services.WareHouseService;
 
 /**
  * Controller class for WareHouse
@@ -20,12 +20,12 @@ import com.shopping.model.WareHouse;
 public class WareHouseController {
 
 	@Autowired
-	WareHouseRepo wareHouseRepo;
+	private WareHouseService wareHouseService;
 
 	@GetMapping("/wareHouses")
 	@CrossOrigin(origins = "*")
 	public List<WareHouse> getListOfWareHouses() {
-		return wareHouseRepo.findAll();
+		return wareHouseService.getListOfWareHouses();
 	}
 
 }

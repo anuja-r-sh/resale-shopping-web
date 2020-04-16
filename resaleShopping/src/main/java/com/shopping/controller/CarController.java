@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopping.dao.repository.CarsRepo;
 import com.shopping.model.Car;
+import com.shopping.services.CarService;
 
 /**
  * Controller class for Car Dao
@@ -21,18 +21,18 @@ import com.shopping.model.Car;
 public class CarController {
 
 	@Autowired
-	private CarsRepo carRepo;
+	private CarService carService;
 
 	@GetMapping("/cars")
 	@CrossOrigin(origins = "*")
 	public List<Car> getListOfCars() {
-		return carRepo.findAll();
+		return carService.getListOfCars();
 	}
 
 	@GetMapping("/cars/{wareHouseId}")
 	@CrossOrigin(origins = "*")
 	public List<Car> getCarsByWareHouse(@PathVariable int wareHouseId) {
-		return carRepo.findByWareHouseId(wareHouseId);
+		return carService.getCarsByWareHouse(wareHouseId);
 	}
 
 }
