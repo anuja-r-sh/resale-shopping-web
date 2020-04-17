@@ -13,5 +13,6 @@
 }
 .description p{
     text-align: left;
-    margin-top: 1rem;
+    margin-top: 30px;
+    font-size: 20px;
 }
