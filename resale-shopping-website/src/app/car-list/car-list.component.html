@@ -1,5 +1,5 @@
 <ol [className]="'list-group'">
-    <li *ngFor="let car of carList" [className]="'card list-group-item carIcon'">
+    <li *ngFor="let car of carList" [className]="'card list-group-item '">
         <span> {{car.make}} {{car.model}} </span>
         <span [className]="'price'"> ${{car.price}}</span>
         <span [className]="'dateAdded'">Added on {{getDateAdded(car.dateAdded)}}</span>

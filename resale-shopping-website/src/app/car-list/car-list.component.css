@@ -11,11 +11,7 @@
 	padding:10px;
 	font-weight: bold;
 }
-.carIcon{
-	background-image: url("../../assets/images/car-icon.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-}
+
 .dateAdded{
 	float: right;
 	font-size: 20px;
