@@ -1,7 +1,9 @@
 export interface WareHouse{
+    name: string,
     location: {
-      lat: string
-      long: string
+      latitude: string
+      longitude: string
     },
-    name: string
+    id:number
+
   }

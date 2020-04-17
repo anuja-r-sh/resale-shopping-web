@@ -35,4 +35,7 @@ export class CarComponent implements OnInit {
     return (flag) ? "Available" : "Not Available";
 
   }
+  getMapLocation(lat, long) {
+    return `http://www.google.com/maps/place/${lat},${long}`;
+  }
 }

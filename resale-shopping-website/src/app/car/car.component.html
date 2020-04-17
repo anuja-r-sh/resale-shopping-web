@@ -1,30 +1,26 @@
-<li [ngClass]="{'card list-group-item': true, 'disabled': car.licensed } ">
+<header (click)="getWareHouseDetails(car.id)">
+    <span> {{car.make}} {{car.model}} </span>
+    <span [className]="'price'"> ${{car.price}}</span>
+    <span [className]="'dateAdded'">Added on {{getDateAdded(car.dateAdded)}}</span>
+</header>
+<div *ngIf="!isCollapsed" [className]="' carDetailsTab'">
 
-    <header (click)="getWareHouseDetails(car.id)">
-        <span> {{car.make}} {{car.model}} </span>
-        <span [className]="'price'"> ${{car.price}}</span>
-        <span [className]="'dateAdded'">Added on {{getDateAdded(car.dateAdded)}}</span>
-    </header>
-    <div *ngIf="!isCollapsed">
-        <table [className]="'table carDetailsTab'">
-            <thead>
-                <tr>
-                    <td scope="col">License</td>
-                    <td scope="col">Location</td>
-                    <td scope="col">Year model</td>
-                    <td scope="col">WareHouse</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr >
-                    <td scope="row">{{getLicenseStatus(car.licensed)}}</td>
-                    <td> {{car.location}}</td>
-                    <td> {{car.yearModel}}</td>
-                    <td> {{wareHouse.name}}</td>
-                </tr>
-            </tbody>
-        </table>
-     
 
-    </div>
-</li>
+    <p>License : {{getLicenseStatus(car.licensed)}}</p>
+
+
+    <p>Location : {{car.location}}</p>
+
+
+    <p>Year model : {{car.yearModel}}</p>
+
+
+    <p>WareHouse : {{wareHouse.name}}</p>
+
+    <p>WareHouse Location :
+        <a target="_blank" href="{{getMapLocation(wareHouse.location.latitude, wareHouse.location.longitude)}}">
+            <img [className]="'wareHouseLocation'" [src]="'../../assets/images/location-icon.png'" />
+        </a>
+    </p>
+
+</div>
