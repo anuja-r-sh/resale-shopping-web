@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CarList } from '../model/car';
 import { __classPrivateFieldSet } from 'tslib';
+import { WareHouse } from '../model/wareHouse';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,12 @@ export class ResaleService {
 
   getAllCarsOfWareHouse(): Observable<CarList> {
 
-  return this.http.get<CarList>(environment.urls.getAllCars);
+    return this.http.get<CarList>(environment.urls.getAllCars);
 
-   
   }
+
+  getWareHouseDetails(carId): Observable<WareHouse> {
+    return this.http.get<WareHouse>(`${environment.urls.getWareHouseDetails}/${carId}`);
+  }
+
 }
