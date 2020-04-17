@@ -5,7 +5,8 @@ export interface Car {
   price: string;
   licensed:boolean;
   yearModel:string;
-  dateAdded:Date
+  dateAdded:Date;
+  location: string;
 }
 
 export interface CarList{

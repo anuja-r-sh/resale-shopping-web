@@ -20,16 +20,4 @@ export class CarListComponent implements OnInit {
       this.carList = data;
     });
   }
-
-  getLicenseStatus(flag) {
-    return (flag) ? "License Available" : "License Not Available";
-
-  }
-
-  getDateAdded(dateAdded) {
-    console.log(dateAdded)
-    const date = new Date(dateAdded);
-    return `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`;
-  }
-
 }

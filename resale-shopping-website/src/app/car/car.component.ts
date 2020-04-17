@@ -13,6 +13,7 @@ export class CarComponent implements OnInit {
   @Input() car: Car;
   wareHouse: WareHouse;
   isCollapsed: boolean = true;
+
   constructor(private resaleService: ResaleService, ) { }
 
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class CarComponent implements OnInit {
 
   }
   getLicenseStatus(flag) {
-    return (flag) ? "License Available" : "License Not Available";
+    return (flag) ? "Available" : "Not Available";
 
   }
 }

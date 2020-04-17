@@ -22,3 +22,7 @@
 .card:hover {
 	cursor: pointer;
 }
+.carDetailsTab{
+	font-size: 20px;
+	float: left;
+}
