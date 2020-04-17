@@ -50,6 +50,7 @@ public class SeedDataController {
 			 * Following code parse through the nested json to store the data
 			 * model in the database
 			 */
+			// TODO use the ObjectMapper for object creation
 			JSONArray wareHouses = (JSONArray) obj;
 			for (Object data : wareHouses) {
 				JSONObject wareHouseObject = (JSONObject) data;
