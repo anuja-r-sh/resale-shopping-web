@@ -61,7 +61,7 @@ public class Utility {
 				String longitude = (String) locationObject.get("long");
 				String latitude = (String) locationObject.get("lat");
 
-				Location location = new Location(longitude, latitude);
+				Location location = new Location( latitude, longitude);
 
 				int wareHouseId = Integer.parseInt((String) wareHouseObject.get("_id"));
 				String wareHouseName = (String) wareHouseObject.get("name");

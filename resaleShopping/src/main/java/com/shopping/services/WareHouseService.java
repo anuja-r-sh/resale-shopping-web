@@ -21,11 +21,12 @@ public class WareHouseService {
 	}
 
 	public Map<String, Object> getWareHouseDetails(int carId) {
-		HashMap<String, Object> wareHouseDetails = new HashMap();
-		WareHouse ws = wareHouseRepo.findWareHouse(carId);
-		wareHouseDetails.put("location", ws.getLocation());
-		wareHouseDetails.put("name", ws.getName());
-		wareHouseDetails.put("id", ws.getId());
+		HashMap<String, Object> wareHouseDetails = new HashMap<>();
+		WareHouse wareHouse = wareHouseRepo.findWareHouse(carId);
+		wareHouseDetails.put("id", wareHouse.getId());
+		wareHouseDetails.put("location", wareHouse.getLocation());
+		wareHouseDetails.put("name", wareHouse.getName());
+
 		return wareHouseDetails;
 
 	}
