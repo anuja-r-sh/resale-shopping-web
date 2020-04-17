@@ -1,14 +1,25 @@
 .card {
 	border: 2px black solid;
 	display: inline-block;
+	width:50%;
 	margin: 10px;
-	font-size: 1rem;
+	font-size: 2rem;
 	border-radius: 10px;
 	text-align: center;
 	padding-top: 50px;
     box-shadow: 2px 2px;
-    padding:10px;
+	padding:10px;
+	font-weight: bold;
+}
+.carIcon{
+	background-image: url("../../assets/images/car-icon.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.dateAdded{
+	float: right;
+	font-size: 20px;
 }
 .price{
-	
+	margin-left: 20px;
 }

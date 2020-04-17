@@ -1,10 +1,7 @@
-<ol>
-    <li *ngFor="let car of carList" [className]="'card'">
-        <p> Maker : {{car.make}}</p>
-        <p> Model Name:  {{car.model}}</p>
-        <p> Year : {{car.yearModel}}</p>
-        <p> Added on : {{getDateAdded(car.dateAdded)}}</p>
-        <p> License status : {{getLicenseStatus(car.licensed)}}</p>
-        <p [className]="'price'"> Price : {{car.price}}</p>
+<ol [className]="'list-group'">
+    <li *ngFor="let car of carList" [className]="'card list-group-item carIcon'">
+        <span> {{car.make}} {{car.model}} </span>
+        <span [className]="'price'"> ${{car.price}}</span>
+        <span [className]="'dateAdded'">Added on {{getDateAdded(car.dateAdded)}}</span>
     </li>
 </ol>
