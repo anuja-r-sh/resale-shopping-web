@@ -1,0 +1,10 @@
+<li  [ngClass]="{'card list-group-item': true, 'disabled': car.licensed } " (click)="getWareHouseDetails(car.id)">
+<span> {{car.make}} {{car.model}} </span>
+<span [className]="'price'"> ${{car.price}}</span>
+<span [className]="'dateAdded'">Added on {{getDateAdded(car.dateAdded)}}</span>
+<div *ngIf="!isCollapsed">
+    {{car.licensed}}
+    {{car.yearModel}}
+    {{wareHouse.name}}
+</div>
+</li>
