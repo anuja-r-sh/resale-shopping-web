@@ -5,38 +5,37 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
 @Document
 public class Car {
 	@Id
-	private long _id;
+	private long id;
 	private String make;
 	private String model;
-	private long year_model;
+	private long yearModel;
 	private Double price;
 	private boolean licensed;
-	private Date date_added = null;
+	private Date dateAdded = null;
 	private String carLocation;
 
-	public Car(long _id, String make, String model, long year_model, Double price, boolean licensed, Date date_added,
+	public Car(long id, String make, String model, long yearModel, Double price, boolean licensed, Date dateAdded,
 			String carLocation) {
 		super();
-		this._id = _id;
+		this.id = id;
 		this.make = make;
 		this.model = model;
-		this.year_model = year_model;
+		this.yearModel = yearModel;
 		this.price = price;
 		this.licensed = licensed;
-		this.date_added = date_added;
+		this.dateAdded = dateAdded;
 		this.carLocation = carLocation;
 	}
 
-	public long get_id() {
-		return _id;
+	public long getId() {
+		return id;
 	}
 
-	public void set_id(long _id) {
-		this._id = _id;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getMake() {
@@ -55,12 +54,12 @@ public class Car {
 		this.model = model;
 	}
 
-	public long getYear_model() {
-		return year_model;
+	public long getYearModel() {
+		return yearModel;
 	}
 
-	public void setYear_model(long year_model) {
-		this.year_model = year_model;
+	public void setYearModel(long yearModel) {
+		this.yearModel = yearModel;
 	}
 
 	public Double getPrice() {
@@ -79,12 +78,12 @@ public class Car {
 		this.licensed = licensed;
 	}
 
-	public Date getDate_added() {
-		return date_added;
+	public Date getDateAdded() {
+		return dateAdded;
 	}
 
-	public void setDate_added(Date date_added) {
-		this.date_added = date_added;
+	public void setDateAdded(Date dateAdded) {
+		this.dateAdded = dateAdded;
 	}
 
 	public String getLocation() {
@@ -97,11 +96,8 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car [_id=" + _id + ", make=" + make + ", model=" + model + ", year_model=" + year_model + ", price="
-				+ price + ", licensed=" + licensed + ", date_added=" + date_added + ", carLocation=" + carLocation
-				+ "]";
+		return "Car [_id=" + id + ", make=" + make + ", model=" + model + ", year_model=" + yearModel + ", price="
+				+ price + ", licensed=" + licensed + ", date_added=" + dateAdded + ", carLocation=" + carLocation + "]";
 	}
-	
-	
 
 }
