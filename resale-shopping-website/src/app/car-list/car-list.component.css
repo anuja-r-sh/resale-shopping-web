@@ -1,0 +1,14 @@
+.card {
+	border: 2px black solid;
+	display: inline-block;
+	margin: 10px;
+	font-size: 1rem;
+	border-radius: 10px;
+	text-align: center;
+	padding-top: 50px;
+    box-shadow: 2px 2px;
+    padding:10px;
+}
+.price{
+	
+}
