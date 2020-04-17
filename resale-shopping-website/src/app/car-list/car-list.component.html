@@ -1,10 +1,10 @@
-<ul>
+<ol>
     <li *ngFor="let car of carList" [className]="'card'">
         <p> Maker : {{car.make}}</p>
         <p> Model Name:  {{car.model}}</p>
         <p> Year : {{car.yearModel}}</p>
-        <p> Added on : {{car.dateAdded}}</p>
+        <p> Added on : {{getDateAdded(car.dateAdded)}}</p>
         <p> License status : {{getLicenseStatus(car.licensed)}}</p>
-        <p [className]="'price'"> Price {{car.price}}</p>
+        <p [className]="'price'"> Price : {{car.price}}</p>
     </li>
-</ul>
+</ol>
