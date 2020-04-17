@@ -14,13 +14,11 @@
     padding: 7px;
 }
 .wareHouseLocation{
-	
     width: 35px;
     height: 35px;
     background-size: contain;
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
 }
-
 .carDetailsTab p{
-text-align: left;
+	text-align: left;
 }
