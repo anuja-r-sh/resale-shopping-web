@@ -1,15 +1,17 @@
 .header{
     width: 100%;
     height: fit-content;
-    font-size: 50px;
+    font-size: 25px;
     background-color: orange;
     text-align: center;
-    font-family: fantasy;
     font-weight: bold;
-    padding: 3rem;
+    padding: 2rem;
 }
-p{
-    background-color: lightskyblue;
-    text-align: center;
-    font-size: 2rem;
+.description {
+    text-align: left;
+    margin: 10px;
+}
+.description p{
+    text-align: left;
+    margin-top: 1rem;
 }
