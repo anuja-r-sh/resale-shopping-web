@@ -14,19 +14,18 @@ export class CartComponent implements OnInit {
   constructor(private interactionService: InteractionService) { }
 
   ngOnInit(): void {
-    this.interactionService.cartItems$.subscribe(car => {
+    this.interactionService.addedCartItem$.subscribe(car => {
       this.cart.push(car);
-      this.totalPrice += Number(Number(car.price).toFixed(2));
+      this.totalPrice += Number(car.price);
     });
-  }
+    this.interactionService.removedCartItem$.subscribe(car => {
+      this.cart.push(car);
+      this.totalPrice -= Number(car.price);
+      this.cart = this.cart.filter((item) => {
+        return item.id != car.id;
+      });
+    });
 
-  addToCart(car) {
-    this.cart.push(car);
-
-  }
-
-  removeFromCart(car) {
-    this.totalPrice = this.totalPrice = car.price;
   }
 
 }

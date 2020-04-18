@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
-import { CarList } from '../model/car';
+import { Car } from '../model/car';
 import { __classPrivateFieldSet } from 'tslib';
 import { WareHouse } from '../model/wareHouse';
 
@@ -13,9 +13,9 @@ export class ResaleService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCarsOfWareHouse(): Observable<CarList> {
+  getAllCarsOfWareHouse(): Observable<Car[]> {
 
-    return this.http.get<CarList>(environment.urls.getAllCars);
+    return this.http.get<Car[]>(environment.urls.getAllCars);
 
   }
 

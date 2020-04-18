@@ -15,18 +15,13 @@ export class CarComponent implements OnInit {
   @Input() car: Car;
   wareHouse: WareHouse;
   isCollapsed: boolean = true;
-  isAddedToCart: boolean = false;
 
   constructor(private resaleService: ResaleService, private interactionService: InteractionService) { }
 
   ngOnInit(): void {
-    this.interactionService.cartItems$.subscribe(car =>{
-
-    });
   }
 
   getDateAdded(dateAdded) {
-    console.log(dateAdded)
     const date = new Date(dateAdded);
     return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
   }
@@ -46,11 +41,7 @@ export class CarComponent implements OnInit {
   }
 
   addToCart(car) {
-    this.isAddedToCart = true;
+    this.car.isAddedToCart = true;
     this.interactionService.addToCart(car);
-  }
-
-  removeFromCart(car) {
-    this.interactionService.removeFromCart(car);
   }
 }

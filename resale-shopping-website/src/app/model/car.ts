@@ -7,10 +7,7 @@ export interface Car {
   yearModel:string;
   dateAdded:Date;
   location: string;
+  isAddedToCart: boolean;
 }
 
-export interface CarList{
-  carDetailsList: Car[];
-
-}
 

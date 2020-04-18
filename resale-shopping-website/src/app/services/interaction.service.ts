@@ -7,18 +7,21 @@ import { Car } from '../model/car';
 })
 export class InteractionService {
 
-  private _cartItemsSource = new Subject<Car>();
+  private _addedCartItem = new Subject<Car>();
+  private _removedCartItem = new Subject<Car>();
+  
 
-  cartItems$ = this._cartItemsSource.asObservable();
+  addedCartItem$ = this._addedCartItem.asObservable();
+  removedCartItem$ = this._removedCartItem.asObservable();
 
   constructor() { }
 
   addToCart(car){
-    this._cartItemsSource.next(car);
+    this._addedCartItem.next(car);
   }
 
   removeFromCart(car){
-    this._cartItemsSource.next(car);
+    this._removedCartItem.next(car);
   }
 
 }
