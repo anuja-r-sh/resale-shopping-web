@@ -29,11 +29,11 @@ Node: refer [link](https://docs.mongodb.com/manual/installation/) for manual Mon
  5. Confirm the MongoDB connection properties in application.properties file.
  
 
- 6. Create a executable jar file of the application and run the jar.
+ 6. Create a executable jar file of the application and run the jar. For instance: 
   
      `java -jar ../resaleShopping-0.0.1-SNAPSHOT.jar `
      
- 7. The  API can be refered from {serverURL}/swagger-ui.html
+ 7. The  Rest API can be refered from {serverURL}/swagger-ui.html
      
 
      
