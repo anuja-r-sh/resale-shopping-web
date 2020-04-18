@@ -1,5 +1,8 @@
 package com.shopping.model;
 
+/**
+ * This is a POJO class for User's Cart Information
+ */
 import org.json.simple.JSONArray;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -34,5 +37,9 @@ public class Cart {
 		this.cars = cars;
 	}
 
+	@Override
+	public String toString() {
+		return "Cart [sessionId=" + sessionId + ", cars=" + cars + "]";
+	}
 
 }

@@ -8,5 +8,4 @@ import com.shopping.model.Cart;
 @Repository
 public interface CartRepo extends MongoRepository<Cart, Integer> {
 
-	
 }

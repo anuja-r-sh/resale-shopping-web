@@ -1,6 +1,8 @@
 package com.shopping.controller;
 
-
+/**
+ * Following class it rest entry point for cart operations.
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

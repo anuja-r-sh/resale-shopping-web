@@ -1,5 +1,9 @@
 package com.shopping.services;
 
+/**
+ * Following class updates the middleware class for data processing 
+ * between controller and dao layer for Cart operations.
+ */
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,14 +21,16 @@ public class CartService {
 	CartRepo cartRepo;
 
 	public String checkout(String json) {
-
+		/*
+		 * Converting the string request body to Cart object to save to DB.
+		 */
 		try {
 			JSONParser jsonParser = new JSONParser();
 			Object obj = jsonParser.parse(json);
 			JSONObject cartJSON = (JSONObject) obj;
 			String sessionId = (String) cartJSON.get("sessionId");
-			
-			JSONArray cartArray =( JSONArray) cartJSON.get("cart");
+
+			JSONArray cartArray = (JSONArray) cartJSON.get("cart");
 			Cart cart = new Cart(sessionId, cartArray);
 			cartRepo.save(cart);
 			return "success";
