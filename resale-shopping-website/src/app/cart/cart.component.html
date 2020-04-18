@@ -11,5 +11,5 @@
             </div>
         </li>
     </ul>
-    <button [className]="'btn_theme checkoutBtn'" [disabled]="cart.length == 0">Check Out</button>
+    <button [className]="'btn_theme checkoutBtn'" [disabled]="cart.length == 0" (click)="checkout()">Check Out</button>
 </section>

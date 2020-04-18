@@ -5,6 +5,7 @@ export const environment = {
   urls: {
     getAllCars: `${server}/cars`,
     getWareHouses: `${server}/wareHouses`,
-    getWareHouseDetails:`${server}/wareHouse`
+    getWareHouseDetails:`${server}/wareHouse`,
+    checkout:`${server}/checkout`,
   }
 };

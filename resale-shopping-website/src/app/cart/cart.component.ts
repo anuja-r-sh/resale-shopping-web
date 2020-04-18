@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../model/car';
 import { InteractionService } from '../services/interaction.service';
+import { ResaleService } from '../services/resale.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,8 @@ export class CartComponent implements OnInit {
 
   cart: Car[] = [];
   totalPrice: number = 0;
-  constructor(private interactionService: InteractionService) { }
+  isCheckedOut = false;
+  constructor(private interactionService: InteractionService, private resaleService: ResaleService) { }
 
   ngOnInit(): void {
 
@@ -49,6 +51,17 @@ export class CartComponent implements OnInit {
   private subtractTotalPrice(price) {
     this.totalPrice -= Number(price);
     this.totalPrice = Number(this.totalPrice.toFixed(3));
+  }
+
+  checkout() {
+    this.isCheckedOut = true;
+    let sessionId = localStorage.getItem("sessionId");
+    if (!sessionId) {
+      sessionId = "" + new Date().getTime() + Math.random() * 100;
+      localStorage.setItem("sessionId", sessionId);
+    }
+    this.resaleService.checkout(this.cart, sessionId).subscribe((data) => {
+    });
   }
 
 }
