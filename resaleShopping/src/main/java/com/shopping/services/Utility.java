@@ -11,7 +11,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import com.shopping.dao.repository.CarsRepo;
@@ -39,7 +38,6 @@ public class Utility {
 		return null;
 	}
 
-	
 	public void loadWareHouseData(String seedData) {
 
 		JSONParser jsonParser = new JSONParser();
@@ -61,7 +59,7 @@ public class Utility {
 				String longitude = (String) locationObject.get("long");
 				String latitude = (String) locationObject.get("lat");
 
-				Location location = new Location( latitude, longitude);
+				Location location = new Location(latitude, longitude);
 
 				int wareHouseId = Integer.parseInt((String) wareHouseObject.get("_id"));
 				String wareHouseName = (String) wareHouseObject.get("name");
@@ -97,5 +95,4 @@ public class Utility {
 		}
 	}
 
-	
 }
