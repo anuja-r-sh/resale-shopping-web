@@ -14,18 +14,41 @@ export class CartComponent implements OnInit {
   constructor(private interactionService: InteractionService) { }
 
   ngOnInit(): void {
+
+    // saving the session in the local storage
+    const cart = localStorage.getItem("resale-shopping-car-cart");
+    if (cart) {
+      this.cart = JSON.parse(cart);
+      this.cart.forEach(car => {
+        this.addToTotalPrice(car.price);
+      });
+    }
+
+
     this.interactionService.addedCartItem$.subscribe(car => {
       this.cart.push(car);
-      this.totalPrice += Number(car.price);
+      this.addToTotalPrice(car.price);
+      localStorage.setItem("resale-shopping-car-cart", JSON.stringify(this.cart));
     });
+
     this.interactionService.removedCartItem$.subscribe(car => {
-      this.cart.push(car);
-      this.totalPrice -= Number(car.price);
+      this.subtractTotalPrice(car.price);
       this.cart = this.cart.filter((item) => {
         return item.id != car.id;
       });
+      localStorage.setItem("resale-shopping-car-cart", JSON.stringify(this.cart));
     });
 
+  }
+
+  private addToTotalPrice(price) {
+    this.totalPrice += Number(price);
+    this.totalPrice = Number(this.totalPrice.toFixed(3));
+  }
+
+  private subtractTotalPrice(price) {
+    this.totalPrice -= Number(price);
+    this.totalPrice = Number(this.totalPrice.toFixed(3));
   }
 
 }
