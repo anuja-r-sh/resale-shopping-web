@@ -1,16 +1,16 @@
 package com.shopping;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.nio.charset.Charset;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.ResourceUtils;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.util.StreamUtils;
 
 import com.shopping.services.Utility;
 
@@ -52,11 +52,10 @@ public class ResaleShoppingApplication {
 	}
 
 	@Bean
-	public void loadSeedData() throws FileNotFoundException {
-		File file = null;
+	public void loadSeedData() {
 		try {
-			file = ResourceUtils.getFile("classpath:cars.json");
-			String seedData = new String(Files.readAllBytes(file.toPath()));
+			Resource resource = new ClassPathResource("cars.json");
+			String seedData = StreamUtils.copyToString(resource.getInputStream(), Charset.defaultCharset());
 			utility.loadWareHouseData(seedData);
 		} catch (IOException e) {
 			e.printStackTrace();
