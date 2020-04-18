@@ -31,7 +31,7 @@ Node: refer [link](https://docs.mongodb.com/manual/installation/) for manual Mon
 
  6. Create a executable jar file of the application and run the jar. For instance: 
   
-     `java -jar ../resaleShopping-0.0.1-SNAPSHOT.jar `
+     `java -jar ../target/resaleShopping-0.0.1-SNAPSHOT.jar `
      
  7. The  Rest API can be refered from {serverURL}/swagger-ui.html
      
