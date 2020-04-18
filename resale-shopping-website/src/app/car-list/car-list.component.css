@@ -1,7 +1,6 @@
 .card {
 	border: 1px black solid;
 	display: inline-block;
-	width:50%;
 	margin: 10px;
 	font-size: 2rem;
 	border-radius: 10px;
@@ -12,3 +11,10 @@
 .card:hover {
 	cursor: pointer;
 }
+:host {
+	float: left;
+}
+  .carListContainer{
+	max-height: 800px;
+	overflow: scroll;
+  }

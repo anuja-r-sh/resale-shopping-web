@@ -1,9 +1,8 @@
-<ol [className]="'list-group'">
+<ol [className]="'list-group carListContainer'">
         <li [ngClass]="{'card list-group-item': true, 'disabled': !car.licensed } "  *ngFor="let car of carList">
 
             <app-car [car]="car">
                 </app-car>
     </li>
-
 
 </ol>
