@@ -1,0 +1,15 @@
+<section aria-label="cart">
+    <header [className]="'cartHeader'">
+        <span [className]="'cartLabel'">Cart</span>
+        <span *ngIf="totalPrice != 0 " [className]="'totalPrice'"> Total ${{totalPrice}}</span>
+
+    </header>
+    <ul [className]="'container-fluid cartList'">
+        <li [className]="'row'" *ngFor="let car of cart">
+            <div [className]="'col'">
+                <app-cart-item [car]="car"></app-cart-item>
+            </div>
+        </li>
+    </ul>
+    <button [className]="'btn_theme checkoutBtn'" [disabled]="cart.length == 0">Check Out</button>
+</section>

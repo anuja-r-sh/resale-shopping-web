@@ -1,0 +1,8 @@
+<div [className]="'conatiner-fluid'">
+    <div [className]="'row'">
+        <span [className]="'col'">{{car.make}}</span>
+        <span [className]="'col'">{{car.model}}</span>
+        <span [className]="'col price'">Price: {{car.price}}</span>
+        <span [className]="'col'"><button (click)="removeFromCart(car)" [className]="'btn_theme'">Remove</button></span>
+    </div>
+</div>

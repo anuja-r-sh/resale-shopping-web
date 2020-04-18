@@ -1,0 +1,21 @@
+.cartHeader{
+    background-color: orange;
+    text-align: center;
+    padding:20px;
+    font-size:2rem;
+    overflow: hidden;
+}
+.cartList{
+    overflow: scroll;
+    max-height: 700px;
+}
+.totalPrice{
+    float: right;
+    font-size:2rem;
+}
+.cartLabel{
+    float: left;
+}
+.checkoutBtn{
+    float: right;
+}

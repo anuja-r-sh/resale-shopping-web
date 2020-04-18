@@ -3,3 +3,15 @@ body{
     background-color: lightskyblue;
     font-family: fantasy;
 }
+.btn_theme{
+    border-radius: 6px;
+    box-shadow: 1px 1px;
+    padding: 10px;
+    background-color: orange;
+    color: white;
+    font-size: 1rem;
+}
+.btn_theme:disabled{
+	background-color: rgb(216, 174, 97);
+    color:gray;
+} 
